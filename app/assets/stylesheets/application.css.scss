@@ -1,0 +1,22 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * --- Angle Main Stylesheet
+ * 
+ *= require angle/app
+ *
+ * --- Assets paths redefinition 
+ * 
+ *= require fonts
+ *= require font-awesome/css/font-awesome.min
+ *= require simple-line-icons/css/simple-line-icons
+ *= require sweetalert.css
+ *= require styles.css
+ *= require animate.css/animate.min.css
+ *= require bootstrap-social.css
+ *= require pages
+ *= require animate_animo.css
+
+ *
+ */

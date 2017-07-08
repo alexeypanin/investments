@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models:
+      user:
+        one: Пользователь
+        many: Пользователи
+        other: Пользователи
+    attributes:
+      user:
+        name: имя
+        password: пароль
+        password_confirmation: подтверждение пароля
+        email: email
+      forum:
+        name: Название
+  will_paginate:
+    previous_label: "&#8592;"
+    next_label:  "&#8594;"
+    page_gap: "&hellip;"
+  errors:
+    messages:
+      extension_white_list_error: Загруженный файл имеет недопустимый формат

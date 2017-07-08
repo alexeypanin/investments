@@ -1,0 +1,46 @@
+---
+- !ruby/object:Category
+  attributes:
+    id: 1
+    name: Стадия перехода
+    created_at: 2017-03-23 07:44:22.887173000 Z
+    updated_at: 2017-05-06 10:10:31.541267000 Z
+    description: " Возможные проблемы и их решения."
+    position: 1
+    image: perexod.png
+- !ruby/object:Category
+  attributes:
+    id: 3
+    name: Изменения происходящие в теле
+    created_at: 2017-03-23 07:44:34.633751000 Z
+    updated_at: 2017-05-06 10:11:00.936368000 Z
+    description: Про вес, физ. нагрузки, анализы
+    position: 5
+    image: changes.png
+- !ruby/object:Category
+  attributes:
+    id: 5
+    name: Энергетические практики
+    created_at: 2017-03-23 07:44:58.925272000 Z
+    updated_at: 2017-05-06 10:11:16.386723000 Z
+    description: " Различные дыхательные практики, медитации."
+    position: 4
+    image: meditate.svg
+- !ruby/object:Category
+  attributes:
+    id: 4
+    name: Срывы
+    created_at: 2017-03-23 07:44:48.433944000 Z
+    updated_at: 2017-05-06 10:12:24.815065000 Z
+    description: Про срывы на жидком питании и как их можно избегать.
+    position: 2
+    image: srivi.png
+- !ruby/object:Category
+  attributes:
+    id: 2
+    name: Рацион питания, правила питания
+    created_at: 2017-03-23 07:44:28.214294000 Z
+    updated_at: 2017-05-06 10:12:41.910491000 Z
+    description: Различные варинаты жидкого питания и их особенности
+    position: 3
+    image: racion.png
