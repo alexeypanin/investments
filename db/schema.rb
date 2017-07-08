@@ -11,8 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521124656) do
+ActiveRecord::Schema.define(version: 20170708121948) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true
+
+  create_table "credits", force: true do |t|
+    t.integer  "company_id"
+    t.float    "sum"
+    t.integer  "term_in_months"
+    t.integer  "period_in_months"
+    t.float    "annual_rate_in_percents"
+    t.float    "annual_delay_fine_in_percents"
+    t.date     "started_at"
+    t.date     "finished_at"
+    t.float    "payed_credit"
+    t.float    "payed_percents"
+    t.float    "annual_income_in_percents"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.integer  "credit_id"
+    t.float    "sum"
+    t.float    "payed_credit"
+    t.float    "payed_percents"
+    t.date     "payed_at"
+    t.boolean  "delayed"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 end

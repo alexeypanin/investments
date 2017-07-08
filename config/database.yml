@@ -3,4 +3,4 @@ development:
   database: db/credit.sqlite3
 production:
   adapter: sqlite3
-  database: db/production.sqlite3
+  database: db/credit.sqlite3
