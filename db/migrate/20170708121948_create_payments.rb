@@ -3,10 +3,10 @@ class CreatePayments < ActiveRecord::Migration
     create_table :payments do |t|
       t.integer :credit_id
       t.float :sum
-      t.float :payed_credit
-      t.float :payed_percents
+      t.float :payed_credit, default: 0
+      t.float :payed_percents, default: 0
       t.date :payed_at
-      t.boolean :delayed
+      t.boolean :delayed, default: false
 
       t.timestamps
     end

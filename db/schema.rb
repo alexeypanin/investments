@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20170708121948) do
     t.float    "annual_delay_fine_in_percents"
     t.date     "started_at"
     t.date     "finished_at"
-    t.float    "payed_credit"
-    t.float    "payed_percents"
-    t.float    "annual_income_in_percents"
+    t.float    "payed_credit",                  default: 0.0
+    t.float    "payed_percents",                default: 0.0
+    t.float    "annual_income_in_percents",     default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 20170708121948) do
   create_table "payments", force: true do |t|
     t.integer  "credit_id"
     t.float    "sum"
-    t.float    "payed_credit"
-    t.float    "payed_percents"
+    t.float    "payed_credit",   default: 0.0
+    t.float    "payed_percents", default: 0.0
     t.date     "payed_at"
-    t.boolean  "delayed"
+    t.boolean  "delayed",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

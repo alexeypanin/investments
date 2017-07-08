@@ -9,9 +9,9 @@ class CreateCredits < ActiveRecord::Migration
       t.float :annual_delay_fine_in_percents
       t.date :started_at
       t.date :finished_at
-      t.float :payed_credit
-      t.float :payed_percents
-      t.float :annual_income_in_percents
+      t.float :payed_credit, default: 0
+      t.float :payed_percents, default: 0
+      t.float :annual_income_in_percents, default: 0
 
       t.timestamps
     end
