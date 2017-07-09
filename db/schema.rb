@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20170708121948) do
 
   create_table "payments", force: true do |t|
     t.integer  "credit_id"
-    t.float    "sum"
     t.float    "payed_credit",   default: 0.0
     t.float    "payed_percents", default: 0.0
+    t.date     "date"
     t.date     "payed_at"
     t.boolean  "delayed",        default: false
     t.datetime "created_at"
