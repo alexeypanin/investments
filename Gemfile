@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.15'
-gem 'pg'
 gem 'sqlite3'
 gem 'sass-rails',            '~> 5.0.4'
 gem 'coffee-rails',          '~> 4.1.1'
@@ -15,12 +14,12 @@ gem 'pry-remote'
 gem 'russian',                                github: 'yaroslav/russian',       ref: '6da1fe45cb'
 gem 'will_paginate',         '~> 3.0.0'
 gem 'haml-rails',            '~> 0.5.3'
-gem 'devise',                   '3.3.0'
 gem 'normalizr'
 gem 'sanitize'
 gem 'jbuilder', '~> 2.0'
-gem 'acts_as_paranoid', '~> 0.5.0'
 gem 'turbolinks'
+
+gem 'draper'
 
 group :production do
   gem 'unicorn',             '~> 5.0.1'
@@ -55,6 +54,5 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem "erb2haml"
 end
 
