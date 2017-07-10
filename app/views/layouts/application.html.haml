@@ -32,6 +32,13 @@
                     %span.icon-bar
                   .navbar-brand
                     =link_to "$ Калькулятор доходности", root_url, style: "color:#000000;"
+                  / MENU
+                #navbar-main.navbar-collapse.collapse
+                  %ul.nav.navbar-nav.navbar-right.main-navbar
+                    %li
+                      = link_to companies_url do
+                        .icon-settings{style: 'display:inline;padding-right:3px;'}
+                        НАСТРОЙКИ
                 / MENU
                 #navbar-main.navbar-collapse.collapse
                   - [:error, :alert].each do |type|
