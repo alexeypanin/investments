@@ -15,4 +15,8 @@ class CreditDecorator < Draper::Decorator
   def overall_sum
     object.overall_payment_sum * object.term_in_months
   end
+
+  def display_name
+    "#{object.sum.round} р. на #{object.term_in_months} #{Russian.pluralize(object.term_in_months, 'месяц', 'месяца', 'месяцев')}"
+  end
 end

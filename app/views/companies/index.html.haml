@@ -1,0 +1,42 @@
+.panel.panel-default{style: "margin-top:70px;border-top-width:1px;"}
+  .panel-body
+    %h3{style: 'padding:0px'} Выдача кредитов и регистрация платежей
+    %hr
+    .text-center
+      .btn-group
+        %button.btn.btn-info.btn-sm{"data-target": "#new-company-form", "data-toggle": "collapse"} добавить новую компанию
+        %br
+    #new-company-form.collapse{style: "margin-top:5px;"}
+      .row
+        %br
+        = form_for @company, html: {"data-parsley-validate" => "", :novalidate => ""}  do |f|
+          .col-md-8.col-md-offset-2
+            .form-group
+              .col-md-12
+                = f.text_field :name, class: 'form-control', placeholder: "Название компании..", required: "required", 'data-parsley-error-message':  'название не может быть пустым'
+            .form-group
+              .col-md-12.text-center{style: "padding-top:15px;"}
+                = f.submit 'добавить', class: "btn btn-sm btn-info", data: {disable_with: 'сохраняем..'}
+    %hr
+    .table-container
+      %table.table.table-filter
+        %thead
+          %tr
+            %td Кампания
+            %td Кредиты
+            %td Действия
+        %tbody
+          - if @companies.present?
+            - @companies.each do |company|
+              %tr
+                %td= company.name
+                %td
+                  - if company.credits.present?
+                    - credits = CreditDecorator.decorate_collection(company.credits)
+                    - credits.each do |credit|
+                      %p= link_to credit.display_name, company_credit_path(company,credit)
+                  - message = company.credits.present? ? 'выдать новый кредит':'выдать кредит'
+                  %p= link_to message, new_company_credit_path(company)
+                %td
+                  - if company.credits.blank?
+                    = link_to 'удалить', company_path(company), data: {method: 'delete', confirm: 'Вы уверены?'}

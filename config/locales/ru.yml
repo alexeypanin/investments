@@ -5,6 +5,10 @@ ru:
         one: Пользователь
         many: Пользователи
         other: Пользователи
+      company:
+        one: Компания
+        many: Компании
+        other: Компании
     attributes:
       user:
         name: имя
@@ -12,6 +16,8 @@ ru:
         password_confirmation: подтверждение пароля
         email: email
       forum:
+        name: Название
+      company:
         name: Название
   will_paginate:
     previous_label: "&#8592;"

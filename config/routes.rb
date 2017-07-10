@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-   root 'home#index'
+  resources :companies do
+    resources :credits
+  end
+
+  root 'home#index'
  end

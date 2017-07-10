@@ -37,10 +37,10 @@
                   - [:error, :alert].each do |type|
                     - if flash[type]
                       :javascript
-                        sweetAlert({ title: "<h3>#{flash[type]}</h3>", timer: 4000, type: 'error', html: true})
+                        sweetAlert({ title: "<h3>#{flash[type]}</h3>", timer: 3000, type: 'error', html: true})
                   - if flash[:success]
                     :javascript
-                      sweetAlert({title: "<h3>#{flash[:success]}</h3>", timer: 4000, type: 'success', showConfirmButton: true, html: true });
+                      sweetAlert({title: "<h3>#{flash[:success]}</h3>", timer: 3000, type: 'success', showConfirmButton: true, html: true });
             / END STICKY NAVBAR
         / END HEADER
         / START APP SHOTS
