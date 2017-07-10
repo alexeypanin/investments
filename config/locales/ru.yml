@@ -19,6 +19,8 @@ ru:
         name: Название
       company:
         name: Название
+      payment:
+        payed_at: Дата внесения платежа
   will_paginate:
     previous_label: "&#8592;"
     next_label:  "&#8594;"

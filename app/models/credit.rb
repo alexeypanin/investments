@@ -20,7 +20,7 @@ class Credit < ActiveRecord::Base
 
   # дата внесения следующего платежа
   def next_payment_date
-    started_at + (payments.count * period_in_months).months
+    started_at + (1 + payments.count * period_in_months).months
   end
 
   # сумма для закрытия всего долга по кредиту
@@ -36,7 +36,7 @@ class Credit < ActiveRecord::Base
     self.payed_percents = payments.sum(:payed_percents)
     self.annual_income_in_percents = (payed_percents / payed_credit * 12 / term_in_months) * 100
 
-    if finished_at.blank? && ( payed_credit == sum )
+    if finished_at.blank? && ( payed_credit >= sum )
       self.finished_at = payments.last.payed_at
     end
 

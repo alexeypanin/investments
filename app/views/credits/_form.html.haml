@@ -39,10 +39,12 @@
   .form-group
     %label.col-md-4.control-label{:for => "submit"}
     .col-md-4
-      %button#submit.btn.btn-info{:name => "submit"}
+      %button#submit.btn.btn-info.btn-sm{:name => "submit"}
         - if @credit.new_record?
           выдать кредит
         - else
           обновить кредит
+      &nbsp;
+      = link_to 'Отмена', companies_path, class: 'btn btn-sm btn-danger'
   %br
   %br

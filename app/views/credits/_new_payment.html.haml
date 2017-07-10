@@ -1,0 +1,27 @@
+%h3 Регистрация платежей
+
+.div{style: "padding-left:20%"}
+  = form_for @payment, url: add_payment_company_credit_url(@company, @credit), class: 'form-horizontal', html: {"data-parsley-validate" => "", :novalidate => ""}  do |f|
+    %fieldset
+      .form-group{style: "padding-bottom:30px;"}
+        %label.col-md-4.control-label{:for => "sum"} Дата следующего платежа по расписанию
+        .col-md-4= @credit.next_payment_date.strftime('%d.%m.%Y')
+        = f.hidden_field :date, value: @credit.next_payment_date
+      %br
+      .form-group{style: "padding-bottom:30px;"}
+        %label.col-md-4.control-label{:for => "sum"} Дата внесения платежа
+        .col-md-4
+          = f.date_select :payed_at, selected: @credit.next_payment_date
+      %br
+      .form-group
+        %label.col-md-4.control-label{:for => "closing_payment"} Тип платежа
+        .col-md-4
+          %label.radio-inline{:for => "closing_payment-0"}
+            %input#closing_payment-0{:checked => "checked", :name => "payment[closing_payment]", :type => "radio", :value => "0"}/
+            Обычный платеж
+          %label.radio-inline{:for => "closing_payment-1"}
+            %input#closing_payment-1{:name => "payment[closing_payment]", :type => "radio", :value => "1"}/
+            Закрыть весь долг досрочно
+          %br
+          %br
+          %button#submit.btn.btn-info{:name => "submit"} Внести платеж

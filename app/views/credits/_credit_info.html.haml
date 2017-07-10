@@ -1,0 +1,26 @@
+.table-container
+  %table.table.table-filter
+    %tbody
+      %tr
+        %td Cумма ежемесячного платежа по общему долгу
+        %td
+          = number_with_delimiter @credit.period_payment_сredit_sum.round(2)
+          ₽
+      %tr
+        %td Cумма ежемесячного платежа по процентам
+        %td
+          = number_with_delimiter @credit.period_payment_interest_sum
+          ₽
+      - if @credit.payments.present?
+        %tr
+          %td Всего выплачено по кредиту
+          %td
+            = number_with_delimiter @credit.payed_credit.round(2)
+            ₽
+        %tr
+          %td Всего выплачено по процентам
+          %td
+            = number_with_delimiter @credit.payed_percents.round(2)
+            ₽
+%hr
+

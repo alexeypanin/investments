@@ -34,9 +34,16 @@
                   - if company.credits.present?
                     - credits = CreditDecorator.decorate_collection(company.credits)
                     - credits.each do |credit|
-                      %p= link_to credit.display_name, company_credit_path(company,credit)
+                      %p
+                        = link_to credit.display_name, company_credit_path(company,credit)
+                        - if credit.finished_at?
+                          %span{style: "color:green;"} (кредит закрыт)
                   - message = company.credits.present? ? 'выдать новый кредит':'выдать кредит'
-                  %p= link_to message, new_company_credit_path(company)
+                  = link_to new_company_credit_path(company), class: 'btn btn-sm btn-success' do
+                    .fa.fa-plus-circle
+                    = message
                 %td
                   - if company.credits.blank?
-                    = link_to 'удалить', company_path(company), data: {method: 'delete', confirm: 'Вы уверены?'}
+                    = link_to company_path(company), class: 'btn btn-sm btn-danger', data: {method: 'delete', confirm: 'Вы уверены?'} do
+                      .fa.fa-minus-circle
+                      Удалить

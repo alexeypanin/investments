@@ -3,28 +3,28 @@ class Payment < ActiveRecord::Base
 
   belongs_to :credit
 
-  before_validation :set_payment_parts
+  default_scope  { order(:date => :asc) }
 
   validates :payed_at, presence: true
   validates :date, presence: true, uniqueness: {scope: :credit_id, message: 'платеж за данный месяц уже внесен'}
 
   validate :check_dates
 
-  default_scope  { order(:date => :asc) }
+  before_save :set_payment_parts
 
   after_save :update_credit_stats
 
   protected
 
   def set_payment_parts
-    self.payed_credit = closing_payment ? credit.closing_payment_сredit_sum : credit.period_payment_сredit_sum
-    self.payed_percents = calculate_payment_percents
+    self.payed_credit = closing_payment.to_i == 1 ? credit.closing_payment_сredit_sum.round(2) : credit.period_payment_сredit_sum.round(2)
+    self.payed_percents = calculate_payment_percents.round(2)
   end
 
   # сумма платежа по процентам
   def calculate_payment_percents
     # если платеж внесен вовремя
-    if payed_at == credit.next_payment_date
+    if payed_at <= credit.next_payment_date
       credit.sum * credit.annual_rate_in_percents / ( 12 * 100 )
     # если платеж внесен с опозданием
     elsif payed_at > credit.next_payment_date
@@ -41,8 +41,8 @@ class Payment < ActiveRecord::Base
       self.errors.add(:date, 'больше срока кредита')
     end
 
-    if payed_at < date
-      self.errors.add(:payed_at, 'не может быть раньше установленного срока')
+    if payed_at < [credit.started_at, credit.payments.where('id is not null').last.try(:payed_at)].compact.max
+      self.errors.add(:payed_at, 'не может быть раньше предыдущего платежа')
     end
   end
 

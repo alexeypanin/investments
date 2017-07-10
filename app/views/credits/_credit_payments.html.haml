@@ -1,0 +1,17 @@
+%h3 Платежи
+.table-container
+  %table.table.table-filter
+    %thead
+      %tr
+        %td Дата платежа
+        %td Сумма по кредиту
+        %td Сумма по процентам
+        %td Общая сумма платежа
+    %tbody
+      - @payments.each do |payment|
+        - next if payment.new_record?
+        %tr{style: payment.delayed? ? "background-color:red;color:white;":''}
+          %td= payment.payed_at.strftime('%d.%m.%Y')
+          %td= number_with_delimiter payment.payed_credit.round(2)
+          %td= number_with_delimiter payment.payed_percents.round(2)
+          %td= number_with_delimiter (payment.payed_credit + payment.payed_percents).round(2)

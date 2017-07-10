@@ -1,6 +1,6 @@
 class CreditsController < ApplicationController
   before_filter :load_company
-  before_filter :find_credit, only: [:show, :edit, :update, :destroy, :add_payment, :destroy_payment]
+  before_filter :find_credit, only: [:show, :edit, :update, :destroy, :add_payment]
 
   def new
     @credit = @company.credits.build
@@ -8,8 +8,8 @@ class CreditsController < ApplicationController
   end
 
   def show
-    @credit = CreditDecorator.decorate(@credit)
     @payments = @credit.payments
+    @payment = Payment.new
   end
 
   def create
@@ -41,11 +41,17 @@ class CreditsController < ApplicationController
 
     redirect_to company_path(@company)
   end
-  
-  def add_payment
-  end
 
-  def destroy_payment
+  def add_payment
+    @payment = @credit.payments.build params[:payment]
+    if @payment.save
+      flash[:success] = 'Платеж успешно внесен'
+      redirect_to company_credit_path(@company, @credit)
+    else
+      @payments = @credit.payments
+      flash[:alert] = @payment.errors.full_messages.to_sentence
+      render :show
+    end
   end
 
   protected
@@ -53,8 +59,9 @@ class CreditsController < ApplicationController
   def load_company
     @company = Company.find params[:company_id]
   end
-  
+
   def find_credit
     @credit = @company.credits.find(params[:id])
+    @credit = CreditDecorator.decorate(@credit)
   end
 end
