@@ -35,8 +35,8 @@ class Credit < ActiveRecord::Base
     self.payed_percents = payments.sum(:payed_percents)
     self.annual_income_in_percents = (payed_percents / payed_credit * 12 / term_in_months) * 100
 
-    if finished_at.blank? && ( payments.count == term_in_months / period_in_months )
-      self.finished_at = Date.today
+    if finished_at.blank? && ( payed_credit == sum )
+      self.finished_at = payments.last.payed_at
     end
 
     save

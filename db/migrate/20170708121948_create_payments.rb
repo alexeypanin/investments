@@ -10,5 +10,7 @@ class CreatePayments < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :payments, :delayed
   end
 end
