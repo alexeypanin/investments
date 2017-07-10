@@ -22,5 +22,11 @@
           %td
             = number_with_delimiter @credit.payed_percents.round
             ₽
+        - if @credit.finished_at?
+          %tr
+            %td Доходность в годовых %
+            %td
+              = number_with_delimiter @credit.annual_income_in_percents.round
+              \%
 %hr
 
