@@ -15,12 +15,12 @@
         %tr
           %td Всего выплачено по кредиту
           %td
-            = number_with_delimiter @credit.payed_credit.round(2)
+            = number_with_delimiter @credit.payed_credit.round
             ₽
         %tr
           %td Всего выплачено по процентам
           %td
-            = number_with_delimiter @credit.payed_percents.round(2)
+            = number_with_delimiter @credit.payed_percents.round
             ₽
 %hr
 
