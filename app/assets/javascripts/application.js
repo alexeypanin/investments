@@ -23,7 +23,7 @@
 //= require sweetalert/dist/sweetalert.min.js
 //= require jquery_ujs
 //= require turbolinks
-//= require pages
 //= require respond.min.js
 //= require html5shiv.js
 //= require animo.js/animo.js
+//= require bootstrap-slider

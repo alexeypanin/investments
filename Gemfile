@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
 
 gem 'draper'
+gem 'bootstrap-slider-rails'
 
 group :production do
   gem 'unicorn',             '~> 5.0.1'

@@ -1,0 +1,9 @@
+= javascript_include_tag 'pages'
+
+.panel.panel-default{style: "margin-top:70px;border-top-width:1px;"}
+  .panel-body
+    %h3{style: 'padding:0px'} Редактирование кредита для компании #{@company.name}
+    %hr
+
+    = form_for [@company, @credit], class: 'form-horizontal', html: {"data-parsley-validate" => "", :novalidate => ""}  do |f|
+      = render partial: 'credits/form', locals: {f: f}

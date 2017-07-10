@@ -1,0 +1,49 @@
+.panel.panel-default{style: "margin-top:70px;border-top-width:1px;"}
+  .panel-body
+    %h3 Кредит #{@credit.display_name} для кампании #{@company.name}
+    %p выдан #{@credit.started_at.strftime('%d.%m.%Y')}
+    - if @credit.payments.blank?
+      %p= link_to 'Редактировать условия по кредиту', edit_company_credit_path(@company, @credit)
+    .table-container
+      %table.table.table-filter
+        %tbody
+          %tr
+            %td Cумма ежемесячного платежа по общему долгу
+            %td
+              = number_with_delimiter @credit.period_payment_сredit_sum.round(2)
+              ₽
+          %tr
+            %td Cумма ежемесячного платежа по процентам
+            %td
+              = number_with_delimiter @credit.period_payment_interest_sum
+              ₽
+          %tr
+            %td Oбщая сумма ежемесячного платежа
+            %td
+              = number_with_delimiter @credit.overall_payment_sum
+              ₽
+          %tr
+            %td Общая сумма выплат за весь кредит
+            %td
+              = number_with_delimiter @credit.overall_sum
+              ₽
+    %hr
+
+    - if @payments.present?
+      %h3 Платежи
+      .table-container
+        %table.table.table-filter
+          %thead
+            %tr
+              %td Дата платежа
+              %td Сумма по кредиту
+              %td Сумма по процентам
+          %tbody
+            - @payments.each do |payment|
+              %tr
+                %td= payment.payed_at.strftime('%d.%m.%Y')
+                %td= number_with_delimiter @payment.payed_credit.round(2)
+                %td= number_with_delimiter @payment.payed_percents.round(2)
+
+    - if @credit.finished_at.blank?
+      %h3 Внести платеж

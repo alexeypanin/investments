@@ -1,0 +1,48 @@
+%fieldset
+  .form-group{style: "padding-bottom:30px;"}
+    %label.col-md-4.control-label{:for => "sum"} Сумма кредита
+    .col-md-4{ style: "padding-left:70px;"}
+      %input#sum.form-control.input-md{'name': "credit[sum]", value: @credit.sum.round, 'type': 'text', required: "required", 'data-parsley-error-message':  'не может быть пустым и должно быть числом', 'data-parsley-type': "number"	}
+  %br
+  %br
+  .form-group{style: "padding-bottom:30px;"}
+    %label.col-md-4.control-label{:for => "term_in_months"} На срок (в месяцах)
+    .col-md-4
+      %input#annual_rate_in_percents.slider{name: 'credit[term_in_months]', type: "text", 'data-slider-min': "1", 'data-slider-max': "24", 'data-slider-step': "1", 'data-slider-value': "#{@credit.term_in_months}", 'data-slider-ticks': '["1", "3", "6", "9", "12", "15", "18", "21", "24"]', 'data-slider-ticks-labels': '["1", "3", "6", "9", "12", "15", "18", "21", "24"]'}
+  %br
+  %br
+  .form-group{style: "padding-bottom:30px;"}
+    %label.col-md-4.control-label{:for => "selectbasic"} Период выплат (в месяцах)
+    .col-md-4
+      %input#annual_rate_in_percents.slider{name: 'credit[period_in_months]', type: "text", 'data-slider-min': "1", 'data-slider-max': "4", 'data-slider-step': "1", 'data-slider-value': "#{@credit.period_in_months}", 'data-slider-ticks': '["1", "2", "3", "4"]', 'data-slider-ticks-labels': '["1", "2", "3", "4"]'}
+  %br
+  %br
+  .form-group{style: "padding-bottom:30px;"}
+    %label.col-md-4.control-label{:for => "annual_rate_in_percents"} Ставка (% годовых)
+    .col-md-4
+      %input#annual_rate_in_percents.slider_for_percents{name: 'credit[annual_rate_in_percents]', type: "text", 'data-slider-min': "1", 'data-slider-max': "100", 'data-slider-step': "1", 'data-slider-value': "#{@credit.annual_rate_in_percents}", 'data-slider-ticks': '["0", "25", "50", "75", "100"]', 'data-slider-ticks-labels': '["0%", "25%", "50%", "75%", "100%"]'}
+  %br
+  %br
+  .form-group{style: "padding-bottom:30px;"}
+    %label.col-md-4.control-label{:for => "annual_delay_fine_in_percents"} Ставка при просрочке (% годовых)
+    .col-md-4
+      %input#annual_rate_in_percents.slider_for_percents{name: 'credit[annual_delay_fine_in_percents]', type: "text", 'data-slider-min': "1", 'data-slider-max': "100", 'data-slider-step': "1", 'data-slider-value': "#{@credit.annual_delay_fine_in_percents}", 'data-slider-ticks': '["0", "25", "50", "75", "100"]', 'data-slider-ticks-labels': '["0%", "25%", "50%", "75%", "100%"]'}
+
+  %br
+  %br
+  .form-group{style: "padding-bottom:30px;"}
+    %label.col-md-4.control-label{:for => "sum"} Дата выдачи кредита
+    .col-md-4
+      = f.date_select :started_at
+  %br
+  %br
+  .form-group
+    %label.col-md-4.control-label{:for => "submit"}
+    .col-md-4
+      %button#submit.btn.btn-info{:name => "submit"}
+        - if @credit.new_record?
+          выдать кредит
+        - else
+          обновить кредит
+  %br
+  %br

@@ -28,6 +28,7 @@ class Credit < ActiveRecord::Base
     sum - period_payment_сredit_sum * payments.count
   end
 
+  # кэширование данных по статусу выплат платежей
   def update_stats
     return if payments.blank?
 
@@ -40,5 +41,15 @@ class Credit < ActiveRecord::Base
     end
 
     save
+  end
+
+  # для фронтенда
+  def set_defaults
+    self.started_at = Date.today
+    self.sum = 1_000_000
+    self.period_in_months = 1
+    self.term_in_months = 6
+    self.annual_rate_in_percents = 30
+    self.annual_delay_fine_in_percents = 50
   end
 end

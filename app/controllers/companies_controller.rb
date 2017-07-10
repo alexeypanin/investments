@@ -5,6 +5,10 @@ class CompaniesController < ApplicationController
     @company = Company.new
   end
 
+  def show
+    @credits = @company.credits
+  end
+
   def create
     @company = Company.new(params[:company])
     if @company.save
