@@ -20,7 +20,7 @@ class Credit < ActiveRecord::Base
 
   # дата внесения следующего платежа
   def next_payment_date
-    started_at + (1 + payments.count * period_in_months).months
+    started_at + ((1 + payments.count) * period_in_months).months
   end
 
   # сумма для закрытия всего долга по кредиту
