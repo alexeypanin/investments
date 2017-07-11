@@ -44,8 +44,8 @@ $ ->
             payed_percents += credit.payed_percents
             annual_income += credit.annual_income_in_percents
 
-        # realistic_percents = payed_percents / payed_credit / 6 * 12 
-        realistic_percents = (annual_income / credits_count) / 100.0
+        realistic_percents = payed_percents / payed_credit / 6 * 12 # формула корректна только если все кредиты по 6 месяцев
+        # realistic_percents = (annual_income / credits_count) / 100.0
 
       realistic = Math.round(sum * (1 + realistic_percents))
       $('#amount_realistic').val(realistic + ' р.')
