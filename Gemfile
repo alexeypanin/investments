@@ -18,6 +18,8 @@ gem 'normalizr'
 gem 'sanitize'
 gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
+
 
 gem 'draper'
 gem 'bootstrap-slider-rails'

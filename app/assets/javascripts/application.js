@@ -21,6 +21,7 @@
 //= require html5shiv/dist/html5shiv.js
 //= require jquery.scrollTo/jquery.scrollTo.js
 //= require sweetalert/dist/sweetalert.min.js
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
 //= require respond.min.js
