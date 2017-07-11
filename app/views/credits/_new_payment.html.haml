@@ -8,10 +8,12 @@
         .col-md-4= @credit.next_payment_date.strftime('%d.%m.%Y')
         = f.hidden_field :date, value: @credit.next_payment_date
       %br
+      %br
       .form-group{style: "padding-bottom:30px;"}
         %label.col-md-4.control-label{:for => "sum"} Дата внесения платежа
         .col-md-4
           = f.date_select :payed_at, selected: @credit.next_payment_date
+      %br
       %br
       .form-group
         %label.col-md-4.control-label{:for => "closing_payment"} Тип платежа

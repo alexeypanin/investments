@@ -27,3 +27,4 @@
 //= require html5shiv.js
 //= require animo.js/animo.js
 //= require bootstrap-slider
+//= require chosen-jquery

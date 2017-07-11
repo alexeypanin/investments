@@ -13,6 +13,26 @@ class Credit < ActiveRecord::Base
     credit.validates :annual_delay_fine_in_percents
   end
 
+  scope :finished, -> { where('finished_at is not null') }
+
+  class << self
+    # данные по кредитам для калькулятора
+    def finished_credits_data 
+      data = Credit.finished.pluck(:company_id, :payed_credit, :payed_percents, :annual_income_in_percents)
+      credits = {}
+
+      data.each { |d|
+         credits[d[0]] ||= []
+         credits[d[0]] += [{
+           payed_credit: d[1],
+           payed_percents: d[2],
+           annual_income_in_percents: d[3]
+      }]}
+
+      credits
+    end
+  end
+
   # сумма ежемесячного платежа по общему долгу
   def period_payment_сredit_sum
     sum / term_in_months

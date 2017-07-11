@@ -21,6 +21,8 @@ gem 'turbolinks'
 
 gem 'draper'
 gem 'bootstrap-slider-rails'
+gem 'chosen-rails'
+gem 'gon'
 
 group :production do
   gem 'unicorn',             '~> 5.0.1'
