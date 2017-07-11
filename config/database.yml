@@ -4,3 +4,6 @@ development:
 production:
   adapter: sqlite3
   database: db/credit.sqlite3
+test:
+  adapter: sqlite3
+  database: db/credit_test.sqlite3

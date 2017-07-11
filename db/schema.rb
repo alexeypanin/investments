@@ -48,4 +48,6 @@ ActiveRecord::Schema.define(version: 20170708121948) do
     t.datetime "updated_at"
   end
 
+  add_index "payments", ["delayed"], name: "index_payments_on_delayed"
+
 end

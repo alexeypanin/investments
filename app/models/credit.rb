@@ -17,7 +17,7 @@ class Credit < ActiveRecord::Base
 
   class << self
     # данные по кредитам для калькулятора
-    def finished_credits_data 
+    def finished_credits_data
       data = Credit.finished.pluck(:company_id, :payed_credit, :payed_percents, :annual_income_in_percents)
       credits = {}
 

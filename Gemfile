@@ -36,7 +36,8 @@ group :development do
   gem 'meta_request'
   gem 'pry-byebug'
   gem 'ruby-prof'
-  
+  gem 'web-console', '~> 2.0'
+
   # gem 'capistrano'
   # gem 'capistrano-bundler'
   # gem 'capistrano-passenger', '>= 0.1.1'
@@ -51,11 +52,19 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
 
+group :test do
+  gem 'rspec-rails',         '~> 3.4.2'
+  gem 'rspec-collection_matchers'
+  gem 'rspec-activemodel-mocks'
+  gem 'rspec-its'
+  gem 'fuubar',              '~> 2.0.0'
+  gem 'rspec-nc',            '~> 0.2.0',      require: false
+  gem 'faker'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers',    '~> 2.8.0'
+  gem 'database_cleaner'
+end
