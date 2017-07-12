@@ -7,7 +7,7 @@
     .col-sm-6
       = form_tag '', class: 'form-horizontal form-pricing', html: {"data-parsley-validate" => "", :novalidate => ""}  do |f|
         .price-slider
-          %h4.great Инвестиционный пакет
+          %h4.great Инвестиционный портфель
           %p
             %span Выберите компании для инвестирования
             = select_tag :companies, options_for_select(Company.all.map { |c| [c.name, c.id] }, selected: Company.limit(4).pluck(:id)), { class: 'chosen-select', multiple: true, style: "font-size:18px !important;" }
@@ -26,14 +26,14 @@
               %label.control-label{:for => "amount_amirol"} Реалистично:
               %span.help-text#real_percents Годовая доходность
             .col-sm-6
-              %input#amount_realistic.price.lead{ :name => "totalprice", :style => "", :type => "text"}
+              %input#amount_realistic.price.lead{ :name => "totalprice", :style => "", :type => "text", :readonly => 'readonly'}
         .form-group
           .row
             .col-sm-6
               %label.control-label{:for => "amount_amirol"} Оптимистично:
               %span.help-text Годовая доходность (30%)
             .col-sm-6
-              %input#amount_optimistic.price.lead{:name => "totalprice12", :style => "", :type => "text"}
+              %input#amount_optimistic.price.lead{:name => "totalprice12", :style => "", :type => "text", :readonly => 'readonly'}
         %div{:style => "margin-top:30px"}
         %hr.style/
         .form-group

@@ -29,7 +29,7 @@ $ ->
         optimistic = Math.round(sum * 1.3)
       else
         optimistic = sum
-      $('#amount_optimistic').val(optimistic + ' р.')
+      $('#amount_optimistic').val(numeral(optimistic).format('0,0') + ' р.')
 
       payed_credit = 0
       payed_percents = 0
@@ -49,7 +49,7 @@ $ ->
         # realistic_percents = (annual_income / credits_count) / 100.0
 
       realistic = Math.round(sum * (1 + realistic_percents))
-      $('#amount_realistic').val(realistic + ' р.')
+      $('#amount_realistic').val(numeral(realistic).format('0,0') + ' р.')
       $('#real_percents').html("Годовая доходность (#{Math.round(realistic_percents * 100)}%)")
 
   $('.chosen-select').chosen().change(calculateInvestment)
@@ -57,7 +57,7 @@ $ ->
   $("input#investment_slider").slider(
     tooltip: 'always',
     formatter: (value) ->
-      value + ' р.').on('slide', updateInvestField)
+      numeral(value).format('0,0') + ' р.').on('slide', updateInvestField)
 
   elem = $('#investment_sum')
   elem.data('oldVal', elem.val())
@@ -70,4 +70,5 @@ $ ->
   $('#invest-button').click () ->
      sweetAlert({title: "<h3>Мы с вами свяжемся!</h3><img src='/money.png'>", timer: 5000, showConfirmButton: true, html: true });
 
+  $('#amount_realistic').readOnly = true
   calculateInvestment()

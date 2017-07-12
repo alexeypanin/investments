@@ -29,3 +29,5 @@
 //= require animo.js/animo.js
 //= require bootstrap-slider
 //= require chosen-jquery
+//= require numeral.min.js
+//= require pages
