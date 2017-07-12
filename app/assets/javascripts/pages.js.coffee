@@ -66,4 +66,7 @@ $ ->
       calculateInvestment()
       $("input#investment_slider").slider('setValue', elem.val())
 
+  $('#invest-button').click () ->
+     sweetAlert({title: "<h3>Мы с вами свяжемся!</h3><img src='/money.png'>", timer: 5000, showConfirmButton: true, html: true });
+
   calculateInvestment()
