@@ -7,14 +7,13 @@
     %meta{ content: "width=device-width, initial-scale=1, maximum-scale=1", name: "viewport"}
     %link{ href: "https://fonts.googleapis.com/css?family=Playfair+Display", rel: "stylesheet"}
     %title Калькулятор доходности по займу
-    = Gon::Base.render_data
-
     / PREALOADER (loads asap)
     / FAVICON
     %link{:href => "/img/favicon/favicon.ico", :rel => "icon"}/
     /[if lt IE 9] <script src="js/html5shiv.js"></script><script src="js/respond.min.js"></script>
     = stylesheet_link_tag    'application', media: :all
     = javascript_include_tag 'application'
+    / = Gon::Base.render_data
     :javascript
       if ( window.jQBrowser.mobile && top.location != location) top.location.href = document.location.href;
   %body{style: "height: 100% !important;background: url('/assets/back.jpg') repeat center;"}

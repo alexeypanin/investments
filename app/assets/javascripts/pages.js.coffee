@@ -22,7 +22,8 @@ $ ->
 
     if sum > 0
       selected_companies = $('#companies').chosen().val()
-      data = gon.credits
+      # data = gon.credits
+      data = $('#credits_array').data('credits')
 
       if selected_companies != null
         optimistic = Math.round(sum * 1.3)
