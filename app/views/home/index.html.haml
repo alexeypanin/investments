@@ -15,7 +15,7 @@
           %h4.great Ваш вклад
           %p
             %span Укажите сумму которую вы хотите вложить
-          %p= text_field_tag :sum, 100_000, required: "required", id: 'investment_sum', style: "padding-left:10px;font-size:30px;width:230px;"
+          %p= text_field_tag :sum, 100_000, required: "required", id: 'investment_sum', style: "padding-left:10px;font-size:30px;width:230px;", type: 'number'
           %p{style: "padding-top:30px;padding-left:10px;width:50px;"}
             %input#investment_slider{type: "text", 'data-slider-min': "1", 'data-slider-max': "1000000", 'data-slider-step': "100", 'data-slider-value': "100000", 'data-slider-id': 'investment_sum' }
     .col-sm-6
